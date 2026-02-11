@@ -18,8 +18,18 @@ import { data, functions } from "./data.js";
 //////////////////////////////////////
 
 // 👉 add routes here (from Chapter 9 wiki) ...
+router.get("/api", async function (req, res) {
+  res.send({ message: "Hello, World!" });
+});
 
-// 👈
+router.get("/api/common", async function (req, res) {
+  res.send({ message: randomFromArray(data.common) });
+});
+
+router.get("/api/custom", async function (req, res) {
+  console.log(`params = ${req.query.params}`);
+  res.send({ message: returnPassword(req.query.params) });
+});
 
 export default router;
 
